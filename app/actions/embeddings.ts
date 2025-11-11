@@ -73,16 +73,37 @@ export async function generateEmbeddings(
   // fix the local environment (no HF_API_KEY fallback here — you said you want local-only).
   let embedder: any = null;
 
-  // Detect serverless/platform environment (Vercel) and avoid attempting
-  // to import native ONNX-backed transformers there. If running on Vercel
-  // you must provide HF_API_KEY to use the hosted Hugging Face Inference API.
-  const isVercel = !!process.env.VERCEL || !!process.env.VERCEL_URL;
-  if (isVercel) {
-    // If HF_API_KEY is provided, short-circuit to hosted inference to avoid
-    // native library import errors (libonnxruntime missing on serverless).
-    if (process.env.HF_API_KEY) {
-      console.log('[embeddings] detected Vercel environment; using HF Inference API via HF_API_KEY');
-      const HF_KEY = process.env.HF_API_KEY;
+  // Determine available providers and prefer OpenAI if configured.
+  const hasOpenAI = !!process.env.OPENAI_API_KEY;
+  const hasHF = !!process.env.HF_API_KEY;
+  const isServerlessOrForcedRemote = !!process.env.VERCEL || !!process.env.VERCEL_URL || !!process.env.HF_FORCE_REMOTE;
+
+  // Prefer OpenAI embeddings when OPENAI_API_KEY is present (works on Vercel/serverless).
+  if (hasOpenAI) {
+    console.log('[embeddings] using OpenAI embeddings via OPENAI_API_KEY');
+    const OPENAI_KEY = process.env.OPENAI_API_KEY as string;
+    embedder = async (input: string) => {
+      const res = await fetch('https://api.openai.com/v1/embeddings', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${OPENAI_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ model: 'text-embedding-3-small', input }),
+      });
+      if (!res.ok) {
+        const text = await res.text().catch(() => String(res.status));
+        throw new Error(`OpenAI embeddings API error: ${res.status} ${text}`);
+      }
+      const json = await res.json();
+      return json?.data?.[0]?.embedding ?? [];
+    };
+  } else if (isServerlessOrForcedRemote) {
+    // In serverless environments prefer a hosted provider. If HF_API_KEY exists use Hugging Face,
+    // otherwise fail fast with an actionable message so the deploy doesn't surface a native .so error.
+    if (hasHF) {
+      console.log('[embeddings] detected serverless environment; using Hugging Face Inference API via HF_API_KEY');
+      const HF_KEY = process.env.HF_API_KEY as string;
       embedder = async (input: string) => {
         const url = 'https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2';
         const res = await fetch(url, {
@@ -97,20 +118,20 @@ export async function generateEmbeddings(
           const text = await res.text().catch(() => String(res.status));
           throw new Error(`HF inference API error: ${res.status} ${text}`);
         }
-        return res.json();
+        const json = await res.json();
+        // HF returns arrays for many models; return as-is and let coercion happen later
+        return json;
       };
     } else {
-      // Clear actionable error so deploys fail with a helpful message instead
-      // of the opaque libonnxruntime.so.1 missing error.
       const msg =
-        '[embeddings] Running on Vercel but HF_API_KEY is not set.\n' +
-        'Either set HF_API_KEY in your Vercel Environment Variables to use the hosted Hugging Face Inference API,\n' +
-        'or deploy to an environment that provides native ONNX binaries.\n' +
-        'See https://huggingface.co/docs/api-inference/ for details.';
+        '[embeddings] Running on a serverless environment but neither OPENAI_API_KEY nor HF_API_KEY is set.\n' +
+        'Set OPENAI_API_KEY to use OpenAI embeddings, or HF_API_KEY to use the Hugging Face Inference API,\n' +
+        'or deploy to an environment that can load native ONNX binaries for local models.';
       console.error(msg);
       throw new Error(msg);
     }
   }
+
   if (!embedder) {
     try {
     console.log("[embeddings] importing @huggingface/transformers pipeline (this may download model files)...");
