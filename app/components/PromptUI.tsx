@@ -1,5 +1,6 @@
 "use client";
 
+import { Send } from "lucide-react";
 import React, { useState, useRef } from "react";
 
 export default function PromptUI() {
@@ -157,35 +158,36 @@ export default function PromptUI() {
   return (
     <>
       <form
-      onSubmit={handleSubmit}
-      className="fixed left-0 right-0 bottom-4 flex justify-center px-4 pointer-events-auto"
-      aria-label="AI prompt form"
-    >
-      <div className="w-full max-w-3xl">
-        <div className="flex flex-col gap-3 bg-white/90 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 rounded-lg p-3 shadow-md backdrop-blur">
-          <div className="flex items-start gap-3">
-            <textarea
-              value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
-              placeholder="Ask me about your notes..."
-              className="flex-1 min-h-11 resize-none bg-transparent outline-none text-sm text-zinc-900 dark:text-zinc-100"
-              aria-label="Prompt input"
-            />
+        onSubmit={handleSubmit}
+        className="fixed left-0 right-0 bottom-4 flex justify-center px-4 pointer-events-auto"
+        aria-label="AI prompt form"
+      >
+        <div className="w-full max-w-3xl">
+          {/* Gradient border outer container to match the provided design */}
+          <div className="rounded-2xl p-1 bg-linear-to-r from-pink-400 via-purple-400 to-blue-400 shadow-lg">
+            <div className="bg-white/95 dark:bg-zinc-900/95 rounded-xl p-3 flex items-center gap-3 border border-transparent backdrop-blur">
+              <div className="flex-1">
+                <div className="text-xs text-zinc-600 dark:text-zinc-400 mb-1">Knowledge based second brain powered by AI</div>
+                <input
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
+                  placeholder="Ask me about your notes"
+                  className="w-full h-10 bg-transparent outline-none text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
+                  aria-label="Prompt input"
+                />
+              </div>
 
-            <button
-              type="submit"
-              disabled={isSending || !prompt.trim()}
-              className="ml-2 rounded-md bg-zinc-900 text-white px-4 py-2 text-sm disabled:opacity-50"
-            >
-              {isSending ? "Sending..." : "Send"}
-            </button>
+              <button
+                type="submit"
+                disabled={isSending || !prompt.trim()}
+                className="ml-2 rounded-md bg-zinc-900 text-white px-4 py-2 text-sm disabled:opacity-50 flex items-center gap-2"
+              >
+                {isSending ? "Generating..." : "Send"}
+                <Send height={16}/>
+              </button>
+            </div>
           </div>
-
-          <div className="text-xs text-zinc-600 dark:text-zinc-400">Streaming synthesis (default)</div>
-
-          {/* Streaming toggle and small hint are shown in the form; the generated answer is displayed above the form */}
         </div>
-      </div>
       </form>
       {/* Results area (above the prompt). Shows only the generated answer; chunks list removed per request. */}
       {answer ? (
