@@ -1,0 +1,347 @@
+Sequence
+===
+
+Ronsley Vaz: ~ Hello, everybody,~
+
+~Michael, Laura, and just joining. I'll be Sandra.~
+
+Annalisa: ~How are you this evening, everyone else doing ~
+
+Ronsley Vaz: ~well? How are you? We can't see you. You can see a beautiful cake.~
+
+Annalisa: ~Yeah, I'm getting ready. Get online. I just have 1 delivery. I'll be back on in a minute. ~
+
+Ronsley Vaz: ~No worries. No worries. Good to hear your voice.~
+
+Annalisa: ~Good morning. ~
+
+Ronsley Vaz: ~Hey, Annalisa. Good to see you. ~
+
+Annalisa: ~Likewise. ~
+
+Ronsley Vaz: ~Same here. How are you? I'm doing well. Not as warm as you are, so I apologize for the blanket, but All good. I had to, I had to put the air conditioning on. Maybe, maybe the heat will come through the screen. Yeah, it's meant to be winter. That's interesting.~
+
+~It's hilarious. Good to see you, Scott, Snobby, Darren ~ [00:00:00] Today's session is all around deep seek. ~And obviously deep seek is that, like, a lot in the news and again, if you're just joining us, please in the chat where you're joining us from and what are your questions around deep seek so that we can get to the end of it.~
+
+I've got a lot to get through and my goal for today. ~Is to ~to cover what deep seek is all about and why it's such a big deal.~ Sorry, Tim. I'm trying to do admin at the same time and allow people in. ~I'm going to talk about. The AI [00:00:10] model evolution, and there's been ~a,~ an evolution of models from the, you know, first time GPT 3 came out and there's been a big change in how the models have been have been coming [00:00:20] out and the types of models and how.
+
+To prompt those models have changed as well, so I want to talk about that and we'll talk about how you can get support. I'm going to talk about 3 waves of [00:00:30] scale, how to use deep seek and I think most importantly, ~which most people have kind of signed in. But to this, webinar for is~ how to install it on your computer without using it ~ ~in the web, how to not give away your privacy, how to not give away your data, [00:00:40] how to use it without the Internet.
+
+And some use cases that I think is going to be very, very valuable. ~ ~~ If you don't know what I do, I kind of really focus on helping. Founders take their genius what I mean by that is. Whatever it is that they have already built and has been working. And put that into a systems. And before this you know, for 12 years, I've been creating podcasts for some really amazing people and still do.~
+
+~In fact, we still have, we are podcast. So, in terms of amplification, I've been kind of in this space of taking people's genius and their business and, and, and finding ways to get noticed and get seen and get and grow the business. So, it's like the 1st, part of my career and the 2nd, part of my career just came together and had a baby with AI, because I was doing podcasts for so long.~
+
+~And then, and AI, even though AI feels new, I've been a computer scientist for a long time and. It's a, it's a really good mix of both worlds that have just come together. So, let's just get into some of the, some of the, some of the, the content. ~~While I do that, I wanna check the chat. Welcome everyone who's joining us.~
+
+~You're just joining us in the chat. If you can tell us where you're tuning in from and what kind of questions you have when it comes to. Open ai welcome Laura. Southern California. Would love to see how it's better and faster different than chat GPT. Yep. I'm gonna cover that. Not showing a deep sequence until it's been around for a while.~
+
+~the yeah, but I think the types of models are interesting NABI.~ So, deep seek, in particular re-released [00:00:50] its reasoning model, which is the R one model, which has created all the hype. Even though deep seek had been out for a long time. So it's the type of model that is changed and [00:01:00] it's not necessarily a deep seek situation, but it's more about how the different types of models have changed from response to instructions to reasoning.
+
+~Okay. Compare and contrast DeepSeq with other known others. Yes, Scott. Sandra, welcome from Puerto Rico. Michael from Melbourne. My only exposure to DeepSeq is via Perplexity. I'd love to know where you'd recommend, where you'd recommend accessing outside of Perplexity and how to best use it versus other LLFs.~
+
+~Yep, we'll cover that. Vegas, Maryland, Rosie. Welcome. Welcome. What's all the hype about interested in privacy issues? I'm just trying to see if there's anything in here that I'm not going to cover. So how does it compare to flawed AI? And does it support multiple documents and reference databases? We'll find out Robert.~
+
+~So today I'm going to, we're going to do it together and see how we go. Some of us is trained, chat GPT sound like this. How do we transfer that over? Yeah, I'll show you that. Okay. ~~Regarding privacy, so it's a lot of privacy questions. You don't even have to I can guarantee you the stuff I'm going to show you today.~
+
+~You don't even have to use the DeepSeek website for you're going to install it locally on your computer. You're going to have access to DeepSeek. Without the Internet as well, which is what. I think when I put it out on socials, and I said, I installed steep seek on my computer locally. That was got a lot of attention.~
+
+~I was like, oh, if I run a, if I run a webinar or a training on that, would that be useful? And then obviously this became a thing. So, I'm~~ going to show you how to do that. James, of course. It's worth using. Yeah, I'm going to show you without to, you know, the question from most of these was about deep seek about privacy.~
+
+~I'm going to show you how to do that without even worrying about that. It's a Mac compatible. Yes. Don't have a M1 chip on my MacBook. Amazing. So, welcome. Welcome everyone. What I want to talk about first initially is just sort of set the stage and show you some of the things that have changed in in, in the AI world, starting with the different types of models.~
+
+So we first, when [00:01:10] GPT 3 came out, we had basic prompt response interactions, sort of models. Then with the evolution of that, we wanted to get things [00:01:20] Better so we started going after prompt prompt engineering and specific. Steps of prompts were a big deal. Everyone started buying a lot of prompt packs and kind of [00:01:30] work on that.
+
+And now we've got to a point where we've got a that thinks like a team member. So we have obviously evolved quite a bit. ~In ~in the change, I'll show [00:01:40] you what the differences are, right? So, in the basic type of prompting, when it 1st came out, it was basically. You know, someone who could follow exact steps.
+
+It was just you [00:01:50] sending a prompt and getting a response back. And a lot of our time was being spent on correcting things. So, there was a lot of, oh, this is not exactly what I want, [00:02:00] but. I'm going to spend a lot of time~ trying to trying to trying to. ~Trying to correct the output, ~ ~then we got very specific with, you know, telling it exactly what to do with the detailed engineering prompts and.[00:02:10] 
+
+And you will get a good response, but it kind of creates this bottleneck where there's a human required in the process. And by the way, I'm not by no stretch of the imagination [00:02:20] saying that we've gotten to a point right now where human intervention is not required. But it is closer to that than it has ever been.
+
+Okay. [00:02:30] So, in this case, there was a lot of human intervention required. And now we've got into the reasoning models where it's, you know, you can truly [00:02:40] scale your business intelligence. And I'm very specific about your business intelligence. So what's happening right now is. People are outsourcing [00:02:50] intelligence by finding it on the Internet and then using intelligence to amplify it.
+
+And that's why it sounds rubbish, and that's why it sounds generic,~ and that's why it sounds like, ~and that's why most people are saying that, [00:03:00] oh, that's AI content. It's AI content. It's not your amplification of your voice or your thoughts or ~your ~your genius. And that's where you want to get to. And [00:03:10] in this space here.
+
+It's like really having someone who can think for themselves and recorrect themselves. And in DeepSeek R1, this is [00:03:20] great in the paper, when they released the paper, the research paper, there's this, it's called the aha moment inside the reasoning model, which made the [00:03:30] huge hype. And the aha moment was the model saw itself.
+
+So it was [00:03:40] almost sentient in a way that it saw itself and recorrected itself in its reasoning. And that was the aha moment and that that's what became the big deal. ~So if you look it up the aha moment in the R1 deep seek you, you know, if you want to read more about that. ~So [00:03:50] the models have changed over time.
+
+~Okay. And in this space. ~And in this space, Gemini actually had a reasoning model 2 months ago. It wasn't a big deal because it didn't really [00:04:00] shatter much of the expectations. Open AI came out with 0. 1 in December, ~and it came out with when~ came out with it, they came out with it during the time of the 12 days [00:04:10] AI, and it came out like a great feature, but didn't really hit the reasoning capabilities like old tree has right now and obviously deepseek.
+
+So [00:04:20] if you're looking for support, there's a lot of support out there. You know, we've got the podcast. It's got over 100 episodes in there. And videos, it's actually a video podcast. So. [00:04:30] Go to the YouTube channel and find everything from prompting to how to use it in a particular instance. If you're looking, there are episodes on how to set business [00:04:40] goals using AI, how to do a whole bunch of different things.
+
+So, especially for business, go check out the podcast. Definitely get the book. If you're looking, if you have a business and you're looking to sort of [00:04:50] accelerate that on the website, you'll find all sorts of resources, including prompt packs and, ~and, and~ one lines that will change your. AI [00:05:00] experience drastically.
+
+So go find that amplifyais. com is that website. And then inside our school community, which a lot of [00:05:10] you are here from we've got a whole bunch of events coming on. It's usually the same time my Thursday, your Wednesday, if you're in the States or if you're [00:05:20] in Australia, it's Thursday as well. So. These are all Brisbane times that you can see here and there's obviously a few events coming up.
+
+So go [00:05:30] check that out. I want to talk about 3 waves of scale really quickly. So we can get into the deep thing ~who here just a show of hands who here has seen me talk about the 3 different. Ages the different ways of scale, so, the industrial age. The information age and intelligence age. Yeah, I'm just going to repeat it really quickly so that everyone here knows what I'm talking about.~
+
+~So we've had the industrial age. Hey, Chris, I can see you in convenience little box. We, ~~we've had the industrial age and in the industrial age, we commoditized industry. So we've got a lot of machines around us right now that we're taking for granted, but that all came as a result of the. That's great.~
+
+~Built on that industrial age, we gave rise to computers, and because of computers, we needed to store data, and as a result of data, we found a way to store data easily, so information age came around. And we had, we commoditized information. There's no shortage of information right now. And built on the industrial age and the intelligence age, sorry, the industrial age and the information age.~
+
+~We now have the intelligence age, and they've both were needed to create this intelligence because we needed the hardware and the software to come up to the level of intelligence. And this, this is really interesting clip I saw recently where Jimmy Kyle was asked about AI and his thoughts about AI.~
+
+~And he said, I think that man's of humans, I idea of God and something being real, like someone in the clouds that knows everything and is omnipotent and omnipresent, that we've had this need that we've gone and created AI, which is harder in its image. So that's a really interesting thought. I experiment on that, but you see the different ages and that's really important to understand that intelligence is not information.~
+
+~Intelligence builds on information and it's things for itself. It's a silicon based life form and it can do really cool things.~~ So,~ so the three waves of scale. Yesterday I ran this a lot yesterday last week around this [00:05:40] really great. Workshop~ on ~on taking out what's in your head and putting it on a little framework and I got some really good results from that.
+
+If you want access to [00:05:50] that, you'll find it on the Amplify AI's website on the products and services. It's the AI amplification blueprint. Got some really, really good sort of [00:06:00] results from that. And I really, really want you to check it out. So go check that out. All ~ ~resources and slides for this session will be in the school community.
+
+That's the QR [00:06:10] code. Just go to school dot com slash Amplify AI. There are three main concepts that I wanted to get before we get into deepseek the first is there is [00:06:20] a gap. It is a value alignment problem. The value alignment problem is the gap in our way of expressing exactly what's in our head [00:06:30] in words.
+
+Or expressing that correctly in diagrams or whatever that is. So there's a big gap and that's called the value alignment problem. That's [00:06:40] most of the reason why we think AI hallucinates. It's because we have this gap in expressing exactly what we want out of AI. ~First concept. ~Second concept is [00:06:50] use AI to reduce human cognitive load.
+
+So the things that take you time and energy to process, that's what you want to [00:07:00] use. AI for use it as an augmentation of intelligence and the 3rd ~contact ~concept is. ~Oops, that ~context is king and process is queen. And if, you [00:07:10] know. Anything about chess, you know, that Queen is the most most important piece on the board.
+
+And while context is really, really important and you've got to protect [00:07:20] context ~with context ~with everything you have. The process. Is really, really important. So the tools are not as important as the processes. ~Okay. So, while you're here, what I want to do before I go into the compass, so I'll talk about deep sea.~
+
+~So check the chat for a sec.~
+
+~Can I just find out from everyone in here what what what what stood out from the last 15 minutes of presentation like what did you get standing. Did anything hit? If you can put that in the chat, that'd be really useful. While I look at this, find DeepSeek ~
+
+GMT20250205-225709_Recording_as_2560x1440: ~globally. Yes. Yes. One.~
+
+Ronsley Vaz: ~Okay. Right. Process is green. Okay. Thank you. All right. So there's a few things that~ the few reasons why [00:07:30] DeepSeek has obviously made such a big impact. The first is actually more than the powerful performance. It is the affordable [00:07:40] training costs that makes it kind of really insane. So what. Open AI has been saying for all this while, including Sam Altman, actually [00:07:50] very cockily, you know, a lot of presentations when he has been asked,~ well, what if we don't have,~ what if we don't have you know, a hundred million dollars to train models, what do you do?
+
+And [00:08:00] he was very cocky and said, well, you just don't compete with us. And
+
+that clip actually didn't age very well. So, ~what,~ what is really [00:08:10] fascinating about DeepSea is that it costs. Like 6 million to get the results that, that I suppose open AI to, you know, [00:08:20] 100 million and more to get to, and obviously they have to justify where the, ~you know, the the~ investment and where it goes, ~but it costs like really, ~so what that means is as soon as deep [00:08:30] sea came out, actually.
+
+Open AI, the next day came out with with 01, the reasoning model being available on the free plan. [00:08:40] So, they've also just dropped API costs by a tenth, a tenth of what it used to be. So, what's happening now with [00:08:50] DeepSea. Is that everyone's trying not to compete with this new kid on the block and as a result, we are the beneficiaries because it is you [00:09:00] know, it's spreading more opportunity.
+
+The 2nd, ~most 2nd, most,~ most important feature is that it outperforms in a lot of instances, the models that are [00:09:10] running out of the U. S. Which, by the way, I hear today or yesterday that the U. S. are planning to put a, like, a 20 year prison [00:09:20] sentence on anyone that in the U. S. that uses deep sea.
+
+~That show~ that's crazy. That's fear. It's at the highest level. That's insane. I can't [00:09:30] even. I don't even know how they think this is a great idea. Like it's intelligence.~ It's like, ~I suppose that's the only way that they're going to stop progress of where AI is going ~is,~ is [00:09:40] put this kind of crazy, crazy ~ ~fines or ~ ~barricades to use it. 
+
+The third is, ~you know, it,~ it can be run on laptops and phones. It doesn't require that kind of [00:09:50] high data. ~So I lo~ I saw a lot of ~M1.~ I don't have an M1 stuff chip. And you might not need an M1 chip, but you gotta go, you gotta install it to find out [00:10:00] what kind of performance ~it,~ it'll give you. And for me the most important feature ~of,~ of deep seek is that ~it's open, open source.~
+
+~It's, it's, ~it's open source. OpenAI, called OpenAI, this is [00:10:10] American marketing at its finest. It's called OpenAI, but it's closed all the way through. You don't know anything about the model. They haven't released anything. We don't know anything [00:10:20] about how it works. ~We just have to accept whatever it is.~
+
+~And ~DeepSea comes out, does it~ in, you know, ~in kind of a fraction of the cost, and then releases everything and makes it open source. Which is very, very [00:10:30] powerful. So what that gives rise to is that it doesn't have to be massive to be powerful, which is where it's going. Right. You see how intelligence has been commoditized and it's freely [00:10:40] available.
+
+~And I wanted to think about this for all of those of you who have kids we when a child is a human child is born on the planet, we send them to school for 12 years, at least to learn how to operate on this planet. And they learn everything from, you know, physics, chemistry, math, history geography, and so on.~
+
+~But that intelligence is available for free right now. And if that competed with anyone in the class, it would help beat them in every exam. So intelligence is being commoditized. ~It's not like a myth. It is. It's already here. It proves that AI can be trained for a fraction of the cost and it doesn't require big models and it doesn't require big.
+
+Chips that's why [00:10:50] NVIDIA stocks dropped. Like, I think they lost like a trillion and more in stocks or what wiped off the NASDAQ primarily because assumption [00:11:00] was that we required those NVIDIA chips and only those GPU chips. Would be able to train the AI models and then deep sea comes out and says, [00:11:10] no, we can do it and it can just be used like that.
+
+~Like this.~ And they've got a really cool way of doing it by the way, and I don't think I'm going to get into that because it's like, really out [00:11:20] of the scope, but you've got to read that paper and the research paper that came out and it's really fascinating on how they use the aha moment, the reasoning.
+
+[00:11:30] So, Yeah. Open source and ~not all, you know, and which ~which is something that we all want. We want everything to be open source that we can build on the intelligence. So to [00:11:40] install deep seek locally we're going to download and install. Oh, llama. We're going to pull deepseek and let me show you what that looks like.
+
+~So, for everyone here, if you can go to~
+
+~your browser, Okay. And you're going to type olama. com.~
+
+~Okay, and you're just going to download your version whether it is for mac or windows I think most of you might be on mac then if you're on windows, you're going to download that i'm just going to look at the chat So if you want me to slow down, let me know but so you're going to come and you're going to download olama As soon as you download that you're going to run it and install it and then you will get a little Lama on the top of your bar here~
+
+~is everyone. I'm going to I'm going to get you to do this with me. Okay. It's rather than do we need we need terminal at some point. Yes. But right now we just,~ you just go to a browser [00:11:50] type O L L A M A dot com and you're going to come here and find download and then download Olama [00:12:00] and then install it and then you should get this Lama up the top here.
+
+~Great question about Olama and terminal.~
+
+~Chris, I don't know. We'll find out. So you can install it. And we'll see how it runs and what will happen is at the very least, it'll run, I think. But it might be slow. So, otherwise, maybe it's time to get the new silicon chips are like really ridiculous. It's taken, taken computing to a worrying level.~
+
+~Yeah.~
+
+~Okay, ~you install Allama, ~ ~you are gonna go. ~ ~And type [00:12:10] this ~into the chat into the,~ into the terminal. ~So, if you,~ if you have terminal.
+
+Not if you have to give the max, sorry, you're going to go into terminal. So, open spotlight. So, [00:12:20] come on space terminal and open terminal. And you're going to type this means.
+
+Okay. So, when [00:12:30] you do that, what it's going to do is it's going to start downloading. Mine is already downloaded before. So. It's already running here and if I type~ I mean, it'll, ~it'll run ~ ~through the thinking [00:12:40] and then, so this is running already because it's already downloaded for all of you right now. When you run this, run deep C, [00:12:50] R1 7B, except the ones who are already running. 
+
+~Yeah, James, it's already in the chat. It's the, it's, it's the, literally the 1 above. Your comment in the chat is, is the command in the chat.~
+
+So what's really interesting about ~ ~these thinking models ~is, is, ~is before it even ~does the, or ~starts [00:13:00] writing ~the,~ article, which is quite simple, write me an article on supercomputers, it does this thinking and you can read through the thinking and see [00:13:10] how it's coming to this conclusion of what it should write.
+
+Thank you very much. And it's very detailed. Look at the thinking, right? And then it's [00:13:20] gone. Okay, now I'm writing my article on supercomputers based on the thinking. ~So, the point is, no, it is not Mike. And I'm going to show you how to, how to, to get a a UI going. But the main thing I want you to see is is, is that you have Olama running.~
+
+~Okay?~ So that's the 1st thing just want to have a llama [00:13:30] running.
+
+~Is anyone running into issues with, with having that Obama installed? You got great spot. You must have really good and if you're going to install, then you installed it now. Fantastic. Okay, great. So it's quite simple. And Chris, if it's still in progress, it's fine. Just follow the steps, right? So it's, it's just 1 command after the other.~
+
+So once it installed, if you look here, what I've done is upon and. Run this command called olama list. And what [00:13:40] it's showing you is all the other models I have also installed here. ~So I can, I can do olama run lama 3. Okay. And now if I say, me and article on supercomputers. It'll just write the, it'll just write the article.~
+
+~So this is the big difference between this model, and the thinking model of our one before where they look. There was thinking involved without, you know, this is just kind of gone and started writing the writing the article without any thinking.~ So there's different models that you can, you can run on all our and there are models that you can run on [00:13:50] all our, which I'll show you, which they are, that are uncensored, which means you can download it on your computer, kill the Internet, start [00:14:00] running the model, which is actually called it's this Mistral model that's here, Dolphin Mistral, which And you can ask it anything, like, [00:14:10] how do I make explosives?
+
+And it, it will tell you. ~So there's every,~ so it's uncensored. There's no censoring in what you can ask [00:14:20] it which is actually what you want. ~So, so~ on the left hand side, you can see my OLAMA screen, ~which I'm just going to enlarge, but on the, on the left,~ up the top, you click on models, you'll see all the different models that you can get [00:14:30] on OLAMA.
+
+~There's~~,~ there's still a lot. Lama 3. 3 just got out to release. I didn't even know that. But there is ~a lot,~ a lot of models that you can install on your computer [00:14:40] now ~in, in, in the, in the chat. I, I've got a lot about, I've got a lot of questions about M1 and but it can run M1. I would say there will be smaller models in here that you could potentially do the same thing and run on your computer.~
+
+If you ~have,~ don't have a chip or the chip that you're using does not run deep seq well, ~so you,~ you can choose a smaller model there, like see a Gemma two, be two, [00:14:50] 2 billion per parameter model. ~Will, will,~ will run I, I'm assuming you are, it's a Quin 0.5 billion per model. So there are smaller models here that you could [00:15:00] potentially install on your computer and still use without the internet and have intelligence for free on your laptop.
+
+And that's the goal. ~Okay. So now,~ so we've got Allama installed which is great, [00:15:10] which means we actually already have intelligence on the computer ~and,~ and as a result of getting Allama installed, we've then installed R1, [00:15:20] and now we have DeepSeq available on our computer, and we've got DeepSeq, the 7B model.
+
+If you look here on the [00:15:30] left hand side, if you click on DeepSeq, you'll see that there are. There's a lot of models. This is the largest model. Now, this is the [00:15:40] top of the line, even my computer cannot run it. And I've got an M2 with 96 GB RAM to give you an idea [00:15:50] of the computer that's running right now.
+
+And even that won't be able to take this. ~So, ~so I'm running a 7g model because that's the most stable and ~you can choose anything you would choose. You could choose potentially~ if it's not running great. You could [00:16:00] use a 1.
+
+5
+
+billion per minute a month. ~I see the Tiananmen Square comment. This is really interesting because a really good friend of mine in Brisbane runs a, runs a, a newsletter called Pod News James is his name and James put out this post about DeepSea and how, you know, it, it is removing certain, oh, it doesn't talk about certain instances, but And my comment to that was the Chinese are learning from the British to pretend that history didn't happen, which is totally true.~
+
+~Right. And it's interesting that now we're talking about certain things, but there are certain things in general from history that has been wiped out because it was written by the victors. So, ~all these things about certain elements. Don't really worry about that because If you think about how much [00:16:10] censorship goes into open AI, DeepSeek doesn't even come close to that.
+
+~Not even,~ not even a fraction, like. Open AI senses everything. [00:16:20] So you can't even for example, you can't even, you can't even ask it a question about your own x ray as an example. So ~they are, ~they are kind of like [00:16:30] really babying down the models for usage in the US, which is interesting. So you want to find different ways to use it, and you want to find what works, and [00:16:40] these are all really good tests to see how, how tainted the model is.
+
+And there's always going to be an issue with [00:16:50] bias, which is what you've got to, you know, make sure doesn't exist. Okay, so we have this running. The next thing I want you to do is go into [00:17:00] app. docker. com. ~Okay, app. docker. com. And~ you're going to download the Docker desktop. ~So you're going to go download and~ then you're going to pick ~ ~which is yours and then you're going to go and download and [00:17:10] install. 
+
+~I'm going to put that in the chat as well.~
+
+~Yeah, Jen's yours is not, is not slow because of your MacBook Pro. Your, it's slow because it is using the internet as well at the same time. So you're doing the video and that's why it's taking, it's fine when it completes it's, it'll really just, it's good. So you can pay attention to this stuff, but you can still download Docker, by the way, and so do that.~
+
+~So download Docker, install it,~ and once you install it, you will come and open it 
+
+~and it'll look something like that, just. Open it,~
+
+~you don't have to worry about it. ~Okay, so just install docker sign in. I think you can just [00:17:20] use your. Gmail, Google and sign in and just keep that in.~ And if anyone, everyone's got Docker installed or a few of you have got installed, let me know so that we can go on to the next step.~
+
+~And I'm just going to tell you what Docker is while everyone's here. ~Docker allows you to run an environment in a little container on your computer. So you're going to, we're going to [00:17:30] create a small container to run as a UI. ~On your~ on your laptop or computer. ~And if I open my docker, I've done a few things in here over time, which is if you remember a few months ago and tropical Claude released computer usage, so, you know, it would, you could literally like what operator is on on on chat, you could do that on your computer locally and I had a little docker container so To get that going, but it's not really,~ you don't have to really worry about what it [00:17:40] does.
+
+Then it just creates a little container. So you can have access to whatever it is you're going to install next. ~Okay, so can I, yeah, so you're going to go once you go to app. docker. com, you're going to come here to Docker Desktop. So, innovate with Docker Desktop, or actually, maybe I'll just give you this link.~
+
+~I'll give you this link.~
+
+~And you should just go to download and it should take you to this screen here, and then you just download your version of Docker for your computer.~
+
+~Just use recommended settings.~
+
+Okay, so once you have Docker installed, which is very [00:17:50] straightforward, the next thing you're going to go and do is you're going to go to this website.
+
+~You're going to go to the link I said above, Susan, and you're going to download it from there. Or you go into Google and say download Docker for Mac, and you should get a link. Should be straightforward. Yeah.~ So, at the top I've put a link to OpenWebUI. This is a GitHub [00:18:00] page. Now, for those who are not technically inclined GitHub is the place for geeks and I've been living on GitHub [00:18:10] for a long time and no one's even known GitHub existed, but GitHub has all repositories of everyone that has open source stuff.
+
+So, one of the really cool [00:18:20] people that have done and given this out for free is open, open web UI, which is very useful. Once you go here, you're going to scroll [00:18:30] all the way down. Don't let any of this stuff intimidate you. If you're not technically inclined, you're just going to scroll all the way down until you come [00:18:40] here
+
+to Quick Start with Docker. ~Quick Start with Docker is~ where you're going to go. ~ ~And you're going to come down here ~ ~to Installation with Default Configuration. [00:18:50] And you're going to say ~ ~this command. ~ ~When you copy that command, you're going to come
+
+Into your terminal and it's going to paste that [00:19:00] down the bottom. 
+
+~Okay. And when you, I mean, ~mine is already running. That's why it's telling me that I have to stop the container, but my container is already running. You won't have~ that ~this message that will come up. [00:19:10] It'll just start running. Okay. And what will happen is that in Docker, it'll say. You'll have this green and it'll be running. 
+
+~So~
+
+~now I'm going to put that again. Yeah, that's no problem in the chat. This command. Is here in the chat, ~but again, the way to find the one is [00:19:20] go to the GitHub page that I put up the top and then you're going to scroll all the way down until you find quick start with Docker. You're going to [00:19:30] copy this on your computer, use this command, which is that we've got a lot more installed.
+
+You have Docker installed, so we're just going to copy this command and going to put that [00:19:40] into the terminal here. And we're going to run it as soon as you run it. In docker, you're going to get this green symbol. [00:19:50] Okay. And it'll show you that it's created this link on this link is a link called local post [00:20:00] full of 3000.
+
+You don't even have to type that you go to docker. You'll see a link here. You can just click on that. ~ ~And what you [00:20:10] have here is a UI version of. ~Okay, so ~on the left hand side of the top, you'll see. [00:20:20] You see the different models that I have installed, 
+
+~you saw the 3. 1. So whatever I had access to,~
+
+~whatever I had access to here is here's the same models. Here's the list of my models. ~The same models are here so I can pick whatever model I want, which is a deep seek [00:20:30] and~ can go~
+
+~and now it'll have deep seek.~ Now, this, by the way, deep seek is not the deep seek that is. On the website. [00:20:40] So whatever you have here, this is the deep security. Go to chat. deepseek. com. ~This is the ~this is the deep seat on the web and you can definitely [00:20:50] use it. It's obviously a different model, but this is everything on this, by the way.
+
+And I have their~ privacy, ~the privacy statement. ~So it's really not.~
+
+~And ~it's really important to know [00:21:00] that we hear what information we collect. We collect your information in 3 ways information you provide automatically collected information and information from other sources.~ More details provided below. They're not even telling you, ~they're [00:21:10] not even hiding the fact that they're taking your information or they're storing your information.
+
+They are storing your information. And they're also telling you how they're going to use the information. [00:21:20] And what they do with the information. ~So, in their privacy, a very clear ~unlike open a eyes privacy, which is, which is actually written by probably a bunch of lawyers. That makes it super difficult to understand.
+
+[00:21:30] But here they're very clear about, ~about, about their, ~about their model and what it does. ~So,~ so what we're doing here is just avoiding this whole situation. [00:21:40] We're not actually using anything on the web. So we've gone and installed it on our computer, ~and now we just have it here. Which means, whatever you see here, so once it's installed, you can switch off the internet, which I'm not going to do now because all of you will disappear.~
+
+~And I can still use, I can still use this. Now, the great thing about the way we've installed, Intelligence on my computer today is that I can change the model and I can go, say, into Mistral here and say, I want help to learn how to make explosives ~
+
+GMT20250205-225709_Recording_as_2560x1440: ~or a science project.~
+
+Ronsley Vaz: ~So, in general, you wouldn't get this response in any on any. Large language model it will not tell you like this is Whatever you're doing stop. It's dangerous. Don't do it But this is on your computer and you can it's got you got different types of models. I'm using Lara, I have a I have a learn any skill one in here so I can say me to sell~
+
+~in 20 minutes a day or five days So what it'll do is it this is a this is a model that I have built Myself, and it will use This will use Tim Ferris's breakdown of a skill and create the 8020 and give me exactly what to do in the time to learn the skill. That I need, so if I can give it the time, it'll break it up into the 8020 of the skill and then tell me, okay, this, if that's the time, this is what you need to.~
+
+~To focus on so it'll do that for anything you can do that. I want to learn. I want to learn to run. In the next it'll do the same thing.~
+
+~So, ~the great thing ~about,~ about installing intelligence, the way we've just done this is is that you have access [00:21:50] to all this on your laptop and computer. ~So,~
+
+~okay. A Michael, you did a great job.~
+
+~Okay, let's do some debugging. Mike, do you wanna share your screen and show me what's happening?~
+
+~Michael, this is a great breakdown here, by the way. So everyone, can you copy and paste the steps that Michael's put in here? Thank you for my Michael for that. That's perfect.~
+
+~Can I, can we debug what's happening? So can you show us what's going on? You say when I run the copied script, nothing happens. What are you talking about?~
+
+~What are you supposed to do in OpenAI? Open web, you mean web UI? What's your habit going? You just use it as And now you have it installed on your computer, so you just go into deep seat and start a new chat.~
+
+~You can even set it as a default model, so every time you open a new chat, it'll just be deep seat. And then you use it as a normal, so it's free, so now you don't even have to pay for your chat GPT. So the command, the command is~
+
+~Yeah, just, just click. Yeah, just no, don't don't even copy that just on the right hand side. There's a copy button. Click that. Yep. Right.~
+
+~You're going to come out of this. So you just want to say slash in the terminal, Mike slash by you're going to know, you're not going to, I'm going to paste it here. I'm going to slash by B, Y, E,~
+
+~B, B for backs. B for balls.~
+
+~Enter. Now type the command. Now, now, yeah, enter.~
+
+~Okay, great. So, Ladies and gentlemen, if that's happening for you, then it's, you're probably inside Olama and that's what that's what it was doing. So Mike was already inside Olama and putting the command in. So Olama was going, oh, this is really cool. Let me think about it. That's what was happening.~
+
+~So you got to exit out of Olama and install Docker on your, just on your terminal, just in a plain promise.~
+
+~So, Susan, there's a list of steps to follow that Michael has put up the top and you just follow that. Okay, team. Any last questions before we go?~
+
+~Michael, by the way, this is, this is amazing. Thank you so much for this synopsis. This is great. I'm going to put it again in here.~
+
+~It's in the chat, Sandra, where you just type this stuff. Yeah, to exit. It's slash file.~
+
+~All right, any questions team can I get some quick thoughts before we wind this up? What did you get? What is the thing that stood out the most in today's session? If anyone wants to unmute themselves and and use your voice, that would be amazing.~
+
+~No, it'll pull it. So, as soon as it says, unable to find, if you look at my screen, it said the same thing, but then it started downloading. It should download straight away.~
+
+~Yeah, so the next thing, if you can unmute yourself and let me know what you got out of this, it would be great.~
+
+~Anyone?~
+
+James: ~Hey everyone, it's Lance James. ~
+
+Ronsley Vaz: ~Hey ~
+
+James: ~James. This was very enlightening. I think I've got about 90 percent there, which is sometimes what I've, where I've found myself in these geeky install processes on my computer, but then I get blocked. So, and, and so I actually don't know where to get to hello James, how can I help you today?~
+
+~As on my local host, I got lost, so I kind of did most of it and went through, but then the final step, which is kind of the most important one, is I'm lost. So that's kind of an acknowledgement of progress, but also a frustration of ~
+
+Ronsley Vaz: ~where, where, where'd you say you lost that? So you might have to restart your computer after installed Docker, and that's probably where the, the issue is.~
+
+~Okay, ~
+
+Speaker 2: ~so, so, but where do I actually find local host? 3000. Is that in a browser window? ~
+
+Ronsley Vaz: ~You just, yeah, in a browser window. You just type local hosts three. Colon 3000. ~
+
+Speaker 2: ~Okay, ~
+
+Ronsley Vaz: ~or when it's running when you have docker running I wonder if I just shut docker down ~
+
+Speaker 2: ~like that. It comes up with Safari calculator the server.~
+
+Ronsley Vaz: ~So normally if you have localhost 3000, this is what will happen huh So what you want to do is come into~
+
+~And you're just going to paste that command of docker slash run using open ai you're going to copy this And paste that here. I think enter. ~
+
+Speaker 2: ~Was that the one from github? Oh, that's the command from github. Okay. So I can click clear in the, in the just click clear in, in the terminal. Correct. And then copy that again.~
+
+Ronsley Vaz: ~Correct. So, so what it's saying right now is that Docker is not running, which means, you know, if I go, I need to open Docker up.~
+
+Speaker 2: ~What's the command for clear? Because it says I don't know what you mean. ~
+
+Ronsley Vaz: ~Just clear. Are you on a, are you on a computer? ~
+
+Speaker 2: ~Yeah, I'm in terminal. And it says it seems like you're trying to reset or clear something. Could you clarify what you'd like me to do? ~
+
+Ronsley Vaz: ~Oh, you're still in Olama. So you go slash by there.~
+
+Speaker 2: ~Oh, slash by. ~
+
+Ronsley Vaz: ~Yeah,~
+
+Speaker 2: ~I got to ~
+
+Ronsley Vaz: ~run because I've got another meeting right now. Yeah, no worries. ~
+
+Speaker 2: ~Well, that's really helpful. Well, I'm almost there. Hopefully this will be. So what I'm ~
+
+Ronsley Vaz: ~going to do is what I'm going to do is I'm going to do this from scratch. I'm going to do a little video and it's going to be in the, in the in the school community.~
+
+~Okay, so, if anyone gets, if anyone gets stuck or watch that, I'm going to start all the way from scratch and remove everything from my computer. And then I'll, I'll record that so that you can see what that looks like. All right. Thanks. Oh, you're very welcome team. Good to see everyone. Thank you for being here.~
+
+~Talk soon. Love you long time. ~
+
+Annalisa: ~Yep. Yep. See you. Ron's Lee.~
+

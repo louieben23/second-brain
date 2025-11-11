@@ -8,16 +8,24 @@
     "start": "next start"
   },
   "dependencies": {
+    "@huggingface/transformers": "^3.7.6",
+    "@langchain/community": "^1.0.2",
+    "@supabase/supabase-js": "^2.81.0",
+    "@xenova/transformers": "^1.0.0",
+    "clsx": "^2.1.1",
+    "langchain": "^1.0.4",
+    "lucide-react": "^0.553.0",
+    "next": "16.0.1",
+    "onnxruntime-node": "^1.23.2",
     "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "next": "16.0.1"
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
