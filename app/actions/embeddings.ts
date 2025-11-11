@@ -72,7 +72,33 @@ export async function generateEmbeddings(
   // Try to load a local pipeline. If this fails we surface the error so you can
   // fix the local environment (no HF_API_KEY fallback here — you said you want local-only).
   let embedder: any = null;
-  try {
+
+  // If we're running in Vercel (or another serverless platform) prefer the
+  // hosted Hugging Face Inference API if an HF_API_KEY is available. This
+  // prevents attempts to load native ONNX binaries that aren't present in
+  // serverless environments and avoids import-time failures.
+  if (process.env.VERCEL && process.env.HF_API_KEY) {
+    console.log('[embeddings] detected Vercel environment; using HF Inference API via HF_API_KEY');
+    const HF_KEY = process.env.HF_API_KEY;
+    embedder = async (input: string) => {
+      const url = 'https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2';
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${HF_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(input),
+      });
+      if (!res.ok) {
+        const text = await res.text().catch(() => String(res.status));
+        throw new Error(`HF inference API error: ${res.status} ${text}`);
+      }
+      return res.json();
+    };
+  }
+  if (!embedder) {
+    try {
     console.log("[embeddings] importing @huggingface/transformers pipeline (this may download model files)...");
     // Give the import + pipeline up to 30s before failing to avoid indefinite hangs
     const imp = import("@huggingface/transformers");
@@ -94,7 +120,37 @@ export async function generateEmbeddings(
       `rm -rf node_modules/@huggingface/transformers/.cache/sentence-transformers/all-MiniLM-L6-v2\nnpm install\n` +
       `\nIf the error persists, the ONNX/protobuf binary may be incompatible with your environment. See dev server logs for details.`;
     console.error("[embeddings] model load error:", err);
-    throw new Error(msg);
+    // If an HF API key is available, fall back to the hosted Hugging Face Inference API
+    // This is safe for serverless environments (like Vercel) where native ONNX binaries
+    // are not available. The behavior preserves the original local-first approach.
+    if (process.env.HF_API_KEY) {
+      console.log('[embeddings] falling back to Hugging Face Inference API using HF_API_KEY');
+      const HF_KEY = process.env.HF_API_KEY;
+      // embedder will call the HF Inference API per input and return the JSON result
+      embedder = async (input: string) => {
+        // The inference endpoint for sentence-transformers/all-MiniLM-L6-v2
+        const url = 'https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2';
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${HF_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          // The HF inference API accepts raw string body or JSON array; keep simple
+          body: JSON.stringify(input),
+        });
+        if (!res.ok) {
+          const text = await res.text().catch(() => String(res.status));
+          throw new Error(`HF inference API error: ${res.status} ${text}`);
+        }
+        const json = await res.json();
+        return json;
+      };
+    } else {
+      throw new Error(msg);
+    }
+  }
+
   }
 
   const results: Array<{ chunk: string; embedding: number[]; metadata: Metadata }> = [];

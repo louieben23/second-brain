@@ -208,7 +208,7 @@ export default function PromptUI() {
                 disabled={isSending || !prompt.trim()}
                 className="ml-2 rounded-md bg-zinc-900 text-white px-4 py-2 text-sm disabled:opacity-50 flex items-center gap-2"
               >
-                {isSending ? "Generating..." : "Send"}
+                {isSending ? "Generating..." : "Ask"}
                 <Send height={16}/>
               </button>
             </div>
