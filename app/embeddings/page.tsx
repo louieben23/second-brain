@@ -26,7 +26,19 @@ export default function EmbeddingsPage() {
       body: JSON.stringify({ text, metadata: { source: "125.txt" } }),
     });
     const data = await res.json();
-    setResult(data);
+    // Keep the full data for autosave but do not expose chunk internals (embeddings/content)
+    const raw = data;
+    const sanitized = { ...data };
+    if (sanitized && Object.prototype.hasOwnProperty.call(sanitized, 'chunks')) {
+      // Replace chunks with a high-level summary to avoid showing embeddings/content in the UI
+      try {
+        sanitized.chunks = (raw.chunks || []).map((c: any, i: number) => ({ index: i, has_embedding: Array.isArray(c?.embedding) && c.embedding.length > 0 }));
+        sanitized.chunk_count = Array.isArray(raw.chunks) ? raw.chunks.length : 0;
+      } catch (e) {
+        sanitized.chunks = undefined;
+      }
+    }
+    setResult(sanitized);
     // Autosave if enabled and chunks present
     if (autoSave && data?.chunks) {
       setSaveStatus('saving');
@@ -76,7 +88,12 @@ export default function EmbeddingsPage() {
       {result && (
         <div>
           <h2 className="text-xl font-semibold mt-4">Result</h2>
-          <pre className="text-sm mt-2 overflow-auto max-h-96 bg-gray-100 p-2">{JSON.stringify(result, null, 2)}</pre>
+          <div className="text-sm mt-2 overflow-auto max-h-96 bg-gray-100 p-2">
+            {/* Show only a compact summary — do not reveal chunk text or embeddings */}
+            <div>Chunks: {result?.chunk_count ?? (result?.chunks ? result.chunks.length : 'unknown')}</div>
+            <div>Truncated: {String(result?.truncated ?? false)}</div>
+            <pre className="mt-2 text-xs text-gray-600">{JSON.stringify({ ...result, chunks: undefined }, null, 2)}</pre>
+          </div>
           {saveStatus === 'saving' && <div className="mt-2">Saving...</div>}
           {saveStatus === 'saved' && <div className="mt-2">Saved ✅</div>}
           {saveStatus === 'error' && <div className="mt-2 text-red-600">Save failed</div>}
