@@ -27,6 +27,24 @@ export async function POST(req: Request) {
     // If OpenAI not configured, return header only as a small stream
     if (!OPENAI_KEY) {
       const encoder = new TextEncoder();
+
+      // Try to save an empty response to Supabase 'results' table (graceful if not configured)
+      (async () => {
+        try {
+          const SUPABASE_URL = process.env.SUPABASE_URL;
+          const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+          if (SUPABASE_URL && SUPABASE_KEY) {
+            const { createClient } = await import("@supabase/supabase-js");
+            const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+            await supabase.from('results').insert([{ query, response: '' }]);
+          } else {
+            // Supabase not configured; skip saving
+          }
+        } catch (e) {
+          console.error('[vector/answer/stream] failed to save empty result to supabase', e);
+        }
+      })();
+
       const stream = new ReadableStream({
         start(controller) {
           controller.enqueue(encoder.encode(JSON.stringify({ header }) + '\n\n'));
@@ -75,8 +93,11 @@ export async function POST(req: Request) {
     // Create a ReadableStream that first sends header JSON then streams token deltas from OpenAI
     const stream = new ReadableStream({
       async start(controller) {
-        // send header first
-        controller.enqueue(encoder.encode(JSON.stringify({ header }) + '\n\n'));
+  // send header first
+  controller.enqueue(encoder.encode(JSON.stringify({ header }) + '\n\n'));
+
+  // Accumulate the full response text so we can save it to Supabase after the stream completes
+  let fullResponse = '';
 
         const reader = openRes.body!.getReader();
         const decoder = new TextDecoder();
@@ -109,7 +130,14 @@ export async function POST(req: Request) {
                   const parsed = JSON.parse(payload);
                   const deltaContent = parsed?.choices?.[0]?.delta?.content;
                   if (typeof deltaContent === 'string' && deltaContent.length > 0) {
+                    // stream to client
                     controller.enqueue(encoder.encode(deltaContent));
+                    // accumulate for saving
+                    try {
+                      fullResponse += deltaContent;
+                    } catch (e) {
+                      // ignore accumulation errors
+                    }
                   }
                 } catch (e) {
                   // ignore parse errors for this event
@@ -133,6 +161,7 @@ export async function POST(req: Request) {
                 const deltaContent = parsed?.choices?.[0]?.delta?.content;
                 if (typeof deltaContent === 'string' && deltaContent.length > 0) {
                   controller.enqueue(encoder.encode(deltaContent));
+                  try { fullResponse += deltaContent; } catch (e) {}
                 }
               } catch (e) {
                 // ignore
@@ -142,6 +171,24 @@ export async function POST(req: Request) {
         } catch (e) {
           console.error('[vector/answer/stream] stream read error', e);
         } finally {
+          // After stream ends, attempt to save the accumulated response into Supabase
+          (async () => {
+            try {
+              const SUPABASE_URL = process.env.SUPABASE_URL;
+              const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+              if (SUPABASE_URL && SUPABASE_KEY) {
+                const { createClient } = await import("@supabase/supabase-js");
+                const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+                // Insert the query + full response into the 'results' table
+                await supabase.from('results').insert([{ query, response: fullResponse }] );
+              } else {
+                // Supabase not configured; nothing to do
+              }
+            } catch (e) {
+              console.error('[vector/answer/stream] failed to save result to supabase', e);
+            }
+          })();
+
           controller.close();
           try { reader.releaseLock(); } catch {}
         }

@@ -145,6 +145,32 @@ export default function PromptUI() {
         }
 
         setPrompt('');
+
+        // After streaming completes, attempt to fetch recent saved history and notify other UI
+        // Try a few times in case the server-side save is still finalizing
+        (async () => {
+          const maxAttempts = 4;
+          const delayMs = 300;
+          for (let i = 0; i < maxAttempts; i++) {
+            try {
+              const r = await fetch('/api/results');
+              if (r.ok) {
+                const j = await r.json();
+                // dispatch a window event with the latest results so SideNav can update live
+                try {
+                  window.dispatchEvent(new CustomEvent('history:updated', { detail: j.results ?? [] }));
+                } catch (e) {
+                  // ignore event dispatch failures
+                }
+                break;
+              }
+            } catch (e) {
+              // ignore and retry
+            }
+            // wait before retrying
+            await new Promise((res) => setTimeout(res, delayMs));
+          }
+        })();
       }
     } catch (err) {
       console.error(err);

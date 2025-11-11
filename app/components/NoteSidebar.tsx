@@ -12,6 +12,7 @@ export default function NoteSidebar({ open, onClose }: Props) {
   const [content, setContent] = useState("");
   const [saving, setSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState<string | null>(null);
+  
 
   const handleSave = () => {
     // POST the note to the embeddings save endpoint so it will be converted and persisted
@@ -41,6 +42,7 @@ export default function NoteSidebar({ open, onClose }: Props) {
           // clear inputs after successful save
           setTitle('');
           setContent('');
+          // no-op: history is shown in the sidebar/nav
           // close the sidebar after a short delay so user sees the saved state
           setTimeout(() => onClose(), 350);
         } else {
@@ -56,6 +58,8 @@ export default function NoteSidebar({ open, onClose }: Props) {
       }
     })();
   };
+
+  
 
   return (
     <>
