@@ -1,7 +1,10 @@
 "use server";
 
 // Lightweight chunking utility: splits by sentences then by token-like length
-function chunkText(text: string, maxChars = 2000) {
+// Default maxChars set to 500 so accidental callers without an explicit
+// limit won't produce very large chunks. The function guarantees no chunk
+// will exceed `maxChars` by hard-splitting and a final clamp pass.
+function chunkText(text: string, maxChars = 500) {
   if (!text) return [];
   const sentences = text.split(/(?<=[.!?])\s+/);
   const chunks: string[] = [];
@@ -11,9 +14,10 @@ function chunkText(text: string, maxChars = 2000) {
     if ((current + " " + s).length > maxChars) {
       if (current) chunks.push(current.trim());
       if (s.length > maxChars) {
-        // hard split long sentence
+        // hard split long sentence into exact-size pieces
         for (let i = 0; i < s.length; i += maxChars) {
-          chunks.push(s.slice(i, i + maxChars).trim());
+          const slice = s.slice(i, Math.min(i + maxChars, s.length)).trim();
+          if (slice) chunks.push(slice);
         }
         current = "";
       } else {
@@ -24,7 +28,19 @@ function chunkText(text: string, maxChars = 2000) {
     }
   }
   if (current) chunks.push(current.trim());
-  return chunks;
+  // Final clamp: ensure no chunk exceeds maxChars (defensive - should be unnecessary)
+  const clamped: string[] = [];
+  for (const c of chunks) {
+    if (c.length <= maxChars) {
+      clamped.push(c);
+      continue;
+    }
+    for (let i = 0; i < c.length; i += maxChars) {
+      const slice = c.slice(i, Math.min(i + maxChars, c.length)).trim();
+      if (slice) clamped.push(slice);
+    }
+  }
+  return clamped;
 }
 
 // Simple type for metadata
