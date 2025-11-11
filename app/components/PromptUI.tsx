@@ -191,7 +191,7 @@ export default function PromptUI() {
       </form>
       {/* Results area (above the prompt). Shows only the generated answer; chunks list removed per request. */}
       {answer ? (
-      <div className="fixed left-0 right-0 bottom-28 flex justify-center px-4 pointer-events-auto">
+      <div className="fixed left-0 right-0 bottom-36 flex justify-center px-4 pointer-events-auto">
         <div className="w-full max-w-3xl bg-white/90 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 rounded-lg p-3 shadow-md backdrop-blur">
           <div className="text-xs text-zinc-500 mb-1">Answer</div>
           <div className="text-sm text-zinc-900 dark:text-zinc-100 whitespace-pre-wrap">
