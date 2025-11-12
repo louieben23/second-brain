@@ -17,6 +17,7 @@ export default function SideNav() {
   // tooltip state for source hover (reused from PromptUI)
   const [hoverChunkId, setHoverChunkId] = useState<number | null>(null);
   const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number } | null>(null);
+  const chunkCacheRef = useRef<Record<number, { content: string | null; metadata?: any }>>({});
   const hideTimeoutRef = useRef<number | null>(null);
 
   function clearHideTimeout() {
@@ -40,6 +41,32 @@ export default function SideNav() {
     const rect = (e.target as HTMLElement).getBoundingClientRect();
     setTooltipPos({ x: rect.left, y: rect.top });
     setHoverChunkId(id);
+
+    // If not cached, fetch chunk content from the server
+    const cached = chunkCacheRef.current[Number(id)];
+    if (!cached) {
+      (async () => {
+        try {
+          const res = await fetch('/api/vector/chunk', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id }),
+          });
+          const j = await res.json();
+          if (res.ok && (j?.content != null || j?.metadata != null)) {
+            chunkCacheRef.current[Number(id)] = { content: j.content ?? null, metadata: j.metadata ?? null };
+            // force rerender if tooltip for this id is open
+            setHoverChunkId((cur) => (cur === id ? id : cur));
+          } else {
+            console.error('Failed to fetch chunk', j);
+            chunkCacheRef.current[Number(id)] = { content: null };
+          }
+        } catch (err) {
+          console.error('Error fetching chunk', err);
+          chunkCacheRef.current[Number(id)] = { content: null };
+        }
+      })();
+    }
   }
 
   const fetchHistory = async () => {
@@ -245,7 +272,13 @@ export default function SideNav() {
                 <div className="max-w-md bg-white/95 dark:bg-zinc-800/95 text-xs text-zinc-900 dark:text-zinc-100 p-3 rounded border border-zinc-200 dark:border-zinc-700 shadow">
                   <div className="font-semibold mb-1">Source: {hoverChunkId}</div>
                   <div className="whitespace-pre-wrap">
-                    {getChunkContentById(resultsForSelected, hoverChunkId) ?? 'No chunk available.'}
+                      {(() => {
+                        const cached = hoverChunkId != null ? chunkCacheRef.current[Number(hoverChunkId)] : null;
+                        if (cached && cached.content != null) return cached.content;
+                        // fallback to resultsForSelected when available
+                        const fromResults = hoverChunkId != null ? getChunkContentById(resultsForSelected, hoverChunkId) : null;
+                        return fromResults ?? 'No chunk available.';
+                      })()}
                   </div>
                 </div>
               </div>
